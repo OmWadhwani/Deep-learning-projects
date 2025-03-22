@@ -2,15 +2,10 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-# Load pre-trained emotion detection model
 emotion_model = tf.keras.models.load_model("E:/openCV/my_model.keras")
+emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"] # labels
 
-# Define emotion labels (based on FER2013 dataset)
-emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
-
-# Load Haar Cascade for face detection
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml') # prebuilt harr cascade
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 while cap.isOpened():
